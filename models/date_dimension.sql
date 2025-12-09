@@ -12,7 +12,7 @@ ELSE 'BUSINESSDAY'
 END AS DAY_TYPE,
 {{ get_season('STARTED_AT')}} AS STATION_OF_YEAR,
 
-    from {{ source('demo', 'bike') }}
+    from {{ ref('stg_bike') }}
 where STARTED_AT != 'started_at' and STARTED_AT != '"started_at"'
 )
 select 
